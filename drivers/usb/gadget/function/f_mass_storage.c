@@ -2787,7 +2787,7 @@ int fsg_common_create_lun(struct fsg_common *common, struct fsg_lun_config *cfg,
 	common->luns[id] = lun;
 
 	if (cfg->filename) {
-		printf("check\n");
+		pr_info("Number of LUNs=%d\n", cfg->nluns);
 		rc = fsg_lun_open(lun, cfg->filename);
 		if (rc)
 			goto error_lun;
