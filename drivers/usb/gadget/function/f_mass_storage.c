@@ -2787,6 +2787,7 @@ int fsg_common_create_lun(struct fsg_common *common, struct fsg_lun_config *cfg,
 	common->luns[id] = lun;
 
 	if (cfg->filename) {
+		printf("check\n");
 		rc = fsg_lun_open(lun, cfg->filename);
 		if (rc)
 			goto error_lun;
@@ -2808,6 +2809,9 @@ int fsg_common_create_lun(struct fsg_common *common, struct fsg_lun_config *cfg,
 	      lun->cdrom ? "CD-ROM " : "",
 	      p);
 	kfree(pathbuf);
+
+	// [Addition] add file close
+	// fsg_lun_close(lun);
 
 	return 0;
 
